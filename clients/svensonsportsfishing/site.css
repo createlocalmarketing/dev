@@ -427,3 +427,7 @@ html body .profile-facts h2 {
   font-weight: 500 !important;
   letter-spacing: -0.035em !important;
 }
+
+
+/* Approved single-step header fix: match the utility bar to the title ink. */
+html body .utility{background:#18252a!important;border-top:0!important;border-bottom:2px solid #168c91!important}
