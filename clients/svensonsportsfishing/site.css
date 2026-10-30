@@ -433,4 +433,23 @@ html body .profile-facts h2 {
 /* Header separators: black utility bar, one teal rule beneath the main navigation. */
 html body .utility{background:#000000!important;border-top:0!important;border-bottom:0!important}
 html body header{background:linear-gradient(90deg,#05232d 0%,#062b36 12%,#0b3443 34%,#0b3443 66%,#062b36 88%,#05232d 100%)!important;border-bottom:0!important}
-html body .nav{border-bottom:2px solid #168c91!important}
+/* Header refinements: evenly distribute utility items; fade and split the teal divider; enlarge the centered logo. */
+@media(min-width:1250px){
+ html body .utility .wrap{width:calc(100% - 48px)!important;max-width:1300px!important;min-height:44px!important;margin:0 auto!important;padding:8px 0!important;display:flex!important;align-items:center!important;justify-content:space-between!important;flex-wrap:nowrap!important;gap:8px!important}
+ html body .utility .meta.utility-items{width:auto!important;max-width:none!important;min-width:0!important;flex:1 1 auto!important;display:flex!important;align-items:center!important;justify-content:space-between!important;flex-wrap:nowrap!important;gap:0 clamp(10px,1.2vw,18px)!important;overflow:visible!important;white-space:nowrap!important}
+ html body .utility .meta.utility-items>.utility-item{flex:0 0 auto!important;white-space:nowrap!important}
+ html body .utility-language{flex:0 0 38px!important;margin-left:0!important}
+}
+html body header .nav{position:relative!important;border-bottom:0!important;overflow:visible!important}
+html body header .nav::before,html body header .nav::after{content:"";display:block;position:absolute;bottom:-10px;height:14px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,rgba(22,140,145,0) 0%,rgba(22,140,145,.86) 28%,rgba(22,140,145,.62) 52%,rgba(22,140,145,0) 100%)}
+html body header .nav::before{left:0;width:calc(50% - 132px);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 8%,#000 86%,transparent 100%)}
+html body header .nav::after{right:0;width:calc(50% - 132px);-webkit-mask-image:linear-gradient(270deg,transparent 0%,#000 8%,#000 86%,transparent 100%);mask-image:linear-gradient(270deg,transparent 0%,#000 8%,#000 86%,transparent 100%)}
+html body header .navlinks{position:relative!important;z-index:2!important}
+html body header .brand{position:relative!important;z-index:5!important;transform:translateY(8px)!important}
+html body header .brand img{width:212.5px!important;max-height:none!important;height:auto!important;object-fit:contain!important}
+@media(max-width:900px){
+ html body header .nav{height:72px!important;min-height:72px!important;grid-template-rows:72px!important}
+ html body header .nav::before,html body header .nav::after{width:calc(50% - 92px)}
+ html body header .brand{transform:translateY(6px)!important}
+ html body header .brand img{width:147.5px!important;max-height:none!important}
+}
