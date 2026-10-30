@@ -1,6 +1,6 @@
 (()=> {
   const base=location.origin+'/dev/clients/svensonsportsfishing';
-  const sharedStyle=document.querySelector('link[rel="stylesheet"][href*="site.css"]');if(sharedStyle)sharedStyle.href=base+'/site.css?svenson-title-fonts-20261030c';
+  const sharedStyle=document.querySelector('link[rel="stylesheet"][href*="site.css"]');if(sharedStyle)sharedStyle.href=base+'/site.css?svenson-mega-visual-menu-20261030a';
   const svensonStyle=document.createElement('style');
   svensonStyle.textContent=`
     html body .hero .slide-copy h1,html body .hero .slide-copy h2,html body .pagehead h1,html body .section-title h2,html body .page-intro h2,html body .nav-panel-head h2,html body .topic-feature-copy h2{font-family:Georgia,'Times New Roman',serif!important;font-weight:500!important;letter-spacing:-.035em!important;line-height:1.02!important}
@@ -108,6 +108,45 @@
   const mobile=document.querySelector('.mobile-menu'),links=[...document.querySelectorAll('.navlinks')];
   if(mobile&&links.length)mobile.addEventListener('click',()=>{const open=links.some(x=>x.classList.contains('mobile-open'));links.forEach(x=>x.classList.toggle('mobile-open',!open));mobile.setAttribute('aria-expanded',String(!open))});
   document.querySelectorAll('.nav-dropdown').forEach(d=>d.addEventListener('toggle',()=>{if(d.open)document.querySelectorAll('.nav-dropdown').forEach(x=>{if(x!==d)x.open=false})}));
+
+  // Promote the remaining Ketchikan navigation topics from text links to image-led cards.
+  function completeExploreMenu(){
+    const items=[
+      {path:'parks-public-lands',image:'ketchikan-tongass-trail.webp',eyebrow:'Parks · Forest · Public Access',title:'Parks & Public Lands',subtitle:'Tongass Forest, beaches & recreation sites',description:'Review access, transport, trail conditions, closures, and current agency notices before setting out.'},
+      {path:'hiking-trails',image:'ketchikan-tongass-trail.webp',eyebrow:'Local Trails · Outdoor Planning',title:'Hiking Trails',subtitle:'Choose a trail that fits your day',description:'Compare distance, elevation, access, and transport, then check current trail conditions and bear-safety guidance.'},
+      {path:'directory/game-care',image:'catch-report.webp',eyebrow:'Seafood · Shipping · Cold Chain',title:'Fish Processing & Shipping',subtitle:'Plan to pack and ship your catch home',description:'Review processing and shipping options; confirm cut, packing, pickup deadlines, fees, destination limits, and delivery estimates.'},
+      {path:'alaska-hunting-guide',image:'travel-alaska.webp',eyebrow:'Outfitters · Hunting · Game Care',title:'Hunting & Game Care',subtitle:'Guides, preparation & trophy services',description:'Find local guide information and game-care services, then verify licenses, seasons, access, and current rules with Alaska agencies.'},
+      {path:'real-estate',image:'ketchikan-hillside-homes.webp',eyebrow:'Homes · Rentals · Local Property',title:'Realtors & Real Estate',subtitle:'Explore Ketchikan property resources',description:'Find local real-estate information and providers. Confirm listings, licensing, terms, and availability directly with each professional.'},
+      {path:'safety-survival',image:'ketchikan-rainforest-tour.webp',eyebrow:'Preparedness · CPR · Wilderness',title:'Safety & Survival',subtitle:'Practical learning for Southeast Alaska',description:'Review CPR, emergency medical, and wilderness-safety learning materials. In an emergency, call 911 and follow dispatcher instructions.'},
+      {path:'news',image:'ketchikan-historical-museum.webp',eyebrow:'Local Reporting · Community',title:'Inside Ketchikan',subtitle:'News, history & community updates',description:'Read local reporting and background, check publication dates, and follow linked primary sources for current developments.'}
+    ];
+    const nationalParks={path:'parks-public-lands',image:'travel-alaska.webp',eyebrow:'National Park Service · Alaska',title:'Alaska National Parks',subtitle:'Plan ahead for park access and travel',description:'Explore Alaska park trip-planning information and confirm current access, permits, alerts, and transportation with the National Park Service.'};
+    const addCard=(grid,item,href)=>{
+      const card=document.createElement('article');card.className='card';
+      const img=document.createElement('img');img.src=base+'/assets/'+item.image;img.alt=item.title+' in Ketchikan, Alaska';img.loading='lazy';card.append(img);
+      const copy=document.createElement('div');copy.className='cardcopy';
+      const eyebrow=document.createElement('div');eyebrow.className='eyebrow';eyebrow.textContent=item.eyebrow;copy.append(eyebrow);
+      const title=document.createElement('h3');title.textContent=item.title;copy.append(title);
+      const subtitle=document.createElement('p');subtitle.className='sub';subtitle.textContent=item.subtitle;copy.append(subtitle);
+      const desc=document.createElement('p');desc.textContent=item.description;copy.append(desc);
+      const button=document.createElement('a');button.className='button';button.href=href;button.textContent='Explore '+item.title+' →';copy.append(button);
+      card.append(copy);grid.append(card)
+    };
+    document.querySelectorAll('.explore-panel').forEach(panel=>{
+      if(panel.dataset.completeMenu==='true')return;
+      const grid=panel.querySelector('.nav-cardgrid'),flat=panel.querySelector('.mega-links');
+      if(!grid||!flat)return;
+      const links=[...flat.querySelectorAll('a')];
+      items.forEach(item=>{
+        const source=links.find(a=>a.href.includes('/'+item.path+'/'));
+        if(source)addCard(grid,item,source.href);
+      });
+      if(!links.some(a=>/national.?parks/i.test(a.textContent)))addCard(grid,nationalParks,base+'/parks-public-lands/index.html');
+      panel.dataset.completeMenu='true';flat.dataset.expanded='true';flat.setAttribute('aria-hidden','true')
+    })
+  }
+  completeExploreMenu();
+
   function buildTopicHero(){
     if(document.querySelector('.hero .carousel'))return;
     const pagehead=document.querySelector('.pagehead'),pageTitle=pagehead&&pagehead.querySelector('h1');
