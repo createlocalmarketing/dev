@@ -453,3 +453,13 @@ html body header .brand img{width:212.5px!important;max-height:none!important;he
  html body header .brand{transform:translateY(6px)!important}
  html body header .brand img{width:147.5px!important;max-height:none!important}
 }
+
+/* Extend the split divider to the screen edges while preserving the center gap. */
+html body header{position:sticky!important}
+html body header .nav::before,html body header .nav::after{content:none!important}
+html body header::before,html body header::after{content:"";display:block;position:absolute;bottom:-10px;height:14px;z-index:1;pointer-events:none;background:linear-gradient(to bottom,rgba(22,140,145,0) 0%,rgba(22,140,145,.86) 28%,rgba(22,140,145,.62) 52%,rgba(22,140,145,0) 100%)}
+html body header::before{left:0;width:calc(50% - 132px);-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 78%,transparent 100%);mask-image:linear-gradient(90deg,#000 0%,#000 78%,transparent 100%)}
+html body header::after{right:0;width:calc(50% - 132px);-webkit-mask-image:linear-gradient(270deg,#000 0%,#000 78%,transparent 100%);mask-image:linear-gradient(270deg,#000 0%,#000 78%,transparent 100%)}
+@media(max-width:900px){
+ html body header::before,html body header::after{width:calc(50% - 92px)}
+}
