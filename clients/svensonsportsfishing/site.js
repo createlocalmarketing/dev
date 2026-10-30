@@ -1,9 +1,9 @@
 (()=> {
   const base=location.origin+'/dev/clients/svensonsportsfishing';
-  const sharedStyle=document.querySelector('link[rel="stylesheet"][href*="site.css"]');if(sharedStyle)sharedStyle.href=base+'/site.css?svenson-redesign-20261030b';
+  const sharedStyle=document.querySelector('link[rel="stylesheet"][href*="site.css"]');if(sharedStyle)sharedStyle.href=base+'/site.css?svenson-title-fonts-20261030c';
   const svensonStyle=document.createElement('style');
   svensonStyle.textContent=`
-    body .slide-copy h1,body .pagehead h1,body .page-intro h2,body .topic-feature-copy h2{font-family:Georgia,'Times New Roman',serif!important;font-weight:500!important;letter-spacing:-.035em!important;line-height:1.02!important}
+    html body .hero .slide-copy h1,html body .hero .slide-copy h2,html body .pagehead h1,html body .section-title h2,html body .page-intro h2,html body .nav-panel-head h2,html body .topic-feature-copy h2{font-family:Georgia,'Times New Roman',serif!important;font-weight:500!important;letter-spacing:-.035em!important;line-height:1.02!important}
     body .slide-copy h1{font-size:clamp(42px,4.8vw,64px)!important;color:#0b3443!important}
     body .button{font-family:Lato,Arial,sans-serif!important;font-weight:800!important;letter-spacing:.075em!important;border-radius:2px!important;padding:14px 20px!important}
     body .button:not(.secondary){background:#e76d40!important;border-color:#e76d40!important;color:#fff!important}

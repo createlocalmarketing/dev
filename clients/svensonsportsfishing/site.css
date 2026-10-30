@@ -405,3 +405,25 @@ header{background:#0b3443!important;border-bottom:3px solid #168c91!important}
  .slide-copy h1{font-size:clamp(38px,9vw,52px)!important}
  .button{min-height:46px!important}
 }
+
+
+/* Approved display typography from the Svenson reference HTML. */
+html body h1,
+html body h2,
+html body .hero .slide-copy h1,
+html body .hero .slide-copy h2,
+html body .pagehead h1,
+html body .page-intro h2,
+html body .section-title h2,
+html body .content-block h2,
+html body .faq h2,
+html body .nav-panel-head h2,
+html body .mega h3,
+html body .topic-feature-copy h2,
+html body .profile-summary h1,
+html body .profile-section h2,
+html body .profile-facts h2 {
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-weight: 500 !important;
+  letter-spacing: -0.035em !important;
+}
