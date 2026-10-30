@@ -430,4 +430,7 @@ html body .profile-facts h2 {
 
 
 /* Approved single-step header fix: match the utility bar to the title ink. */
-/* Header separators: black utility bar, one teal rule beneath the main navigation. */\nhtml body .utility{background:#000000!important;border-top:0!important;border-bottom:0!important}\nhtml body header{border-bottom:0!important}\nhtml body .nav{border-bottom:2px solid #168c91!important}
+/* Header separators: black utility bar, one teal rule beneath the main navigation. */
+html body .utility{background:#000000!important;border-top:0!important;border-bottom:0!important}
+html body header{border-bottom:0!important}
+html body .nav{border-bottom:2px solid #168c91!important}
