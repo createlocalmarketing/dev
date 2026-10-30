@@ -463,3 +463,23 @@ html body header::after{right:0;width:calc(50% - 132px);-webkit-mask-image:linea
 @media(max-width:900px){
  html body header::before,html body header::after{width:calc(50% - 92px)}
 }
+
+/* Fix desktop mega-menu anchoring: size it to the full navigation row, not its left link column. */
+html body header .navlinks{position:static!important;z-index:auto!important}
+html body header .nav-dropdown[open] .nav-panel{position:absolute!important;top:100%!important;left:0!important;right:0!important;width:auto!important;max-width:none!important;min-width:0!important;transform:none!important;box-sizing:border-box!important;z-index:40!important}
+html body header .nav-dropdown[open] .nav-panel .nav-cardgrid{grid-template-columns:repeat(4,minmax(0,1fr))!important;min-width:0!important}
+html body header .nav-dropdown[open] .nav-panel .card,html body header .nav-dropdown[open] .nav-panel .cardcopy{min-width:0!important}
+html body header .nav-dropdown[open] .nav-panel .cardcopy p{white-space:normal!important;overflow-wrap:anywhere!important}
+@media(max-width:900px){
+ html body header .navlinks{position:static!important}
+ html body header .nav-dropdown[open] .nav-panel{position:fixed!important;top:82px!important;left:14px!important;right:14px!important;width:auto!important;max-height:calc(100vh - 100px)!important;padding:18px!important;overflow:auto!important}
+ html body header .nav-dropdown[open] .nav-panel .nav-cardgrid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+@media(max-width:560px){
+ html body header .nav-dropdown[open] .nav-panel .nav-cardgrid{grid-template-columns:1fr!important}
+}
+
+/* Fill the round language control with its flag instead of shrinking the SVG to icon size. */
+html body .utility .meta.utility-items .language-trigger{width:38px!important;height:38px!important;padding:0!important;display:grid!important;place-items:center!important}
+html body .utility .meta.utility-items .language-trigger .language-flag{width:36px!important;height:36px!important;padding:0!important;display:grid!important;place-items:center!important;overflow:hidden!important;border:2px solid #dbe3e2!important;border-radius:50%!important}
+html body .utility .meta.utility-items .language-trigger .language-flag svg{display:block!important;width:calc(100% + 6px)!important;height:calc(100% + 6px)!important;max-width:none!important;max-height:none!important;flex:0 0 auto!important}
