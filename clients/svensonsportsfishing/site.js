@@ -1,5 +1,5 @@
 (()=> {
-  const base=location.origin+'/clm-utah-templates/svenson-preview';
+  const base=location.origin+'/dev/clients/svensonsportsfishing';
   const sharedStyle=document.querySelector('link[rel="stylesheet"][href*="site.css"]');if(sharedStyle)sharedStyle.href=base+'/site.css?svenson-redesign-20261030b';
   const svensonStyle=document.createElement('style');
   svensonStyle.textContent=`

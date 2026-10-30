@@ -1,5 +1,5 @@
 (()=> {
-  const base=location.origin+'/clm-utah-templates/svenson-preview';
+  const base=location.origin+'/dev/clients/svensonsportsfishing';
   const sharedStyle=document.querySelector('link[rel="stylesheet"][href*="site.css"]');if(sharedStyle)sharedStyle.href=base+'/site.css?svenson-redesign-20261027e';
   const iconParts={
     info:['circle:12,12,9','path:M12 11v5M12 7h.01'],
